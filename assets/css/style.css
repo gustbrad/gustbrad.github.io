@@ -1,0 +1,189 @@
+.demo-layout-transparent {
+  background: url(../images/7.jpg);
+  height: 100%; 
+  width: 100%;
+  background-size: 100% 100%;
+
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+      your background is light. */
+  color: white;
+}
+
+body {
+  background: #fafafa;
+
+}
+
+.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored.add-playlist{
+  background-color: blue;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored.min-playlist{
+  background-color: blue;
+  position: absolute;
+  bottom: 1rem;
+  right: 7rem;
+}
+.danger {
+  color: red;
+
+}
+#demo-menu-top-right {
+  margin-top: 250px;
+}
+
+#searchBtn {
+  margin-right: 1em;
+}
+#welcome {
+  margin-left: 1em;
+}
+.playlist-song {
+  cursor: pointer;
+}
+
+/** Classes for displaying youtube search results */
+#yt-search-results {
+  padding: .2em;
+  width: auto;
+  overflow: auto;
+  height: 400px; /** I shouldnt hard-code this, just testing overflow scroll */
+  background-color: transparent;
+  color: black;
+  
+}
+.youtube-search-result {
+  display: block;
+  width: max-content;
+  padding: .5em;
+  background: black;
+  margin: .2em auto;
+}
+.result-title {
+  overflow: hidden;
+  word-wrap: none;
+  margin: 0;
+  text-decoration: underline;
+}
+.youtube-search-result-details {
+  background-color: black;
+  color: rgb(235, 22, 146);
+  float: right; 
+  width: 280px;
+  padding-right: .2em;
+  padding-left: .2em;
+}
+.result-description {
+  display: block; /** just here to keep vs code happy */
+}
+.result-date-created {
+  float: right;
+}
+.result-creator {
+  float: left;
+}
+
+#yt-player{
+   width: 600px;
+  height:400px;
+}
+.lyrics {
+  font-size: 1.2em;
+  padding: .4em;
+}
+  /**Divs For Results Lyrics and Player**/
+.mdl-textfield__label {
+  color: white;
+  }
+
+/**Text For Results Card**/
+.mdl-card__title-text {
+  color:blue; 
+}
+
+/**Style for reults card**/
+.mdl-card__title-text, .mdl-card__title {
+  background: black;
+}
+
+/**Style for player card**/
+.mdl-card1{
+  background: transparent;
+  height: auto;
+  width: auto;
+}
+
+.mdl-layout-title, #name, #welcome{
+  color: rgb(235, 22, 146);
+}
+
+.toggle-label-song{
+  padding-right: 15px;
+  color: blue;
+}
+
+.toggle-label-artist{
+  padding-right: 15px;
+  color: rgb(235, 22, 146);
+}
+
+.toggle1{
+  padding-right: 15px;
+  color: blue;
+}
+
+.mdl-textfield__label, .mdl-textfield_input, .crazy{
+  color: blue;
+}
+
+.mdl-card-lyrics{
+  background: black;
+  color: rgb(235, 22, 146);
+  overflow: auto;
+}
+
+.mdl-card{
+  background: black;
+
+}
+
+/**Style for reults card**/
+.mdl-card__media {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: rgb(131, 245, 56);
+}
+/**Style for reults card**/
+.mdl-card__media1 {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+}
+
+#yt-search-results{
+  color: white;
+}
+
+#search {
+  float: right;
+}
+
+/** Helper Classes */
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}

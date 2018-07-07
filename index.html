@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- js Libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <!-- Firebase Links -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js" defer></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-auth.js" defer></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-database.js" defer></script>
+
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body onload="setPlaceHolder()">
+
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">&lt;MEH/></span><span id="welcome">Welcome <span id="name"></span>!</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <!--Toggle switch to change search by song or artist-->
+                    <div class = "toggle-label-artist">Artist</div>
+                    <div>
+                    <label class="mdl-switch mdl-js-switch toggle1" for="switch-1">
+                        <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                    </div> 
+                    <div class = "toggle-label-song">Song</div>
+                    <!--Search input field by song or artist-->
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield crazy">
+                            <input class="mdl-textfield__input crazy" type="text" id="search-input">
+                            <label class="mdl-textfield__label crazy1" for="search-input"></label>
+                        </div>    
+                        <button id="searchBtn" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons" id="search-button">search</i>
+                        </button>   
+                    </form>
+                    <!-- Sign in / Out buttons -can be placed anywhere, one is usually hidden at all times- --> 
+                    <!--Add buttons to initiate auth sequence and sign out-->
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="authorize-button">Login</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="signout-button">Sign Out</button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Your Playlist</span>
+            <nav id="saved-music" class="mdl-navigation">
+                <p class="mdl-navigation__link">You have no saved music, to start saving music sign in and add songs with the add playlist button!</p>
+            </nav>
+        </div>
+           
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card-lyrics">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text mdl-card--border">Lyrics</h2>
+                    </div>
+                    <div class="mdl-card__media">
+                        <div id="search-results-lyrics"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card1">
+                <div class="mdl-card__media1">
+                    <iframe id="yt-player" src="" frameborder="0" class=""></iframe>
+                </div>
+            </div>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text mdl-card--border">Results</h2>
+                </div>
+                <div class="mdl-card__media">
+                    <div id="yt-search-results"></div>
+                </div>
+                <div class="mdl-card__actions">
+                  
+                    <div class="clearfix"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Right aligned menu on top of button  -->
+        <button id="menu-top-right"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored min-playlist">
+            <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect"
+            data-mdl-for="menu-top-right">
+                <li class="mdl-menu__item add">Add to Playlist</li>
+                <li class="mdl-menu__item hide">Hide Results</li>
+                <li class="mdl-menu__item show">Show Results</li>
+                <li class="mdl-menu__item playlist">Show/Go to Playlist</a></li>
+        </ul>
+        <button id="add-playlist" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-playlist">
+                <i class="material-icons play-add">playlist_add</i>
+        </button>
+      </div>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/gapi.js"></script><!--Cannot be 'defer'-->
+    <script src="assets/js/ytAPI.js"></script><!--Cannot be 'defer'-->
+    <!-- Google Api for client and auth 2 -->
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+
+</body>
+</html>
